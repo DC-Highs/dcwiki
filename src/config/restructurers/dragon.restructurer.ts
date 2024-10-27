@@ -14,10 +14,8 @@ class DragonRestructurer {
             throw new Error(`The cost of buying or selling the dragon received a completely unexpected amount: ${data.costs}; ${data.sell_price}`)
         }
 
-        console.log(data.costs, data.costs_array, data.sell_price, data.sell_price_array)
-
-        const rawBuyPrice = data.costs[0]
-        const rawSellPrice = data.sell_price[0]
+        const rawBuyPrice = Array.isArray(data.costs) ? data.costs[0] : data.costs
+        const rawSellPrice = Array.isArray(data.sell_price[0]) ? data.sell_price[0] : data.sell_price
         const buyPriceKeys = Object.keys(rawBuyPrice)
         const sellPriceKeys = Object.keys(rawSellPrice)
         const fieldsToAdd: [string, any][] = []
@@ -73,7 +71,8 @@ class DragonRestructurer {
                 ["trainable_attacks", "trainable_attack_ids"],
                 ["img_name_mobile", "img_name"],
                 ["attributes", "elements"],
-                ["upgrade_levels", "upgrade_phase_levels"]
+                ["upgrade_levels", "upgrade_phase_levels"],
+                ["dragon_ownership_id", "ownership_id"]
             ]
         })
     }

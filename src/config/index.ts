@@ -1,10 +1,11 @@
 import { groupBy } from "lodash"
 import axios from "axios"
 
-import { RestructuredItems } from "./types/restructured-data/index.type"
+import { RestructuredItems } from "./types/restructured-data/items/index.type"
 import objectKeysConversor from "../utils/object-keys-conversor.util"
 import DragonRestructurer from "./restructurers/dragon.restructurer"
 import { CreateConfigOptions } from "./types/index.type"
+import RestructuredConfig from "./restructured-config"
 import { GameConfigData } from "./types/data.type"
 import Localization from "../localization"
 
@@ -12,21 +13,25 @@ export type ConfigOptions = {
     rawData: GameConfigData
     endpointUrl?: string
     token?: string
+    language?: string
 }
 
 class Config {
     private readonly rawData: GameConfigData
     public readonly endpointUrl?: string
     public readonly token?: string 
+    public readonly language?: string
 
     public constructor({
         rawData,
         endpointUrl,
-        token
+        token,
+        language
     }: ConfigOptions) {
         this.rawData = rawData
         this.endpointUrl = endpointUrl
         this.token = token
+        this.language = language
     }
 
     public get data() {
@@ -36,13 +41,18 @@ class Config {
     public static async create({
         endpointUrl,
         token,
-        userId
+        userId,
+        language,
+        filter,
+        platform
     }: CreateConfigOptions) {
         if (token && userId) {
             const response = await axios.post(endpointUrl, null, {
                 params: {
                     token: token,
-                    userId: userId
+                    userId: userId,
+                    filter: filter?.join(","),
+                    platform: platform
                 }
             })
 
@@ -54,11 +64,12 @@ class Config {
         return new Config({
             rawData: response.data,
             endpointUrl: endpointUrl,
-            token: token
+            token: token,
+            language: language
         })
     }
 
-    public restructure(localization: Localization) {
+    public restructure(localization: Localization): RestructuredConfig {
         const config = this.rawData.game_data.config
 
         const translate = localization.translate.bind(localization)
@@ -76,12 +87,12 @@ class Config {
 
         const dragonRestructurer = new DragonRestructurer()
 
-        return {
+        return new RestructuredConfig({
             items: {
                 ...preRestructuredItems,
                 dragons: preRestructuredItems.dragons.map(dragonRestructurer.restructure)
             }
-        }
+        })
     }
 }
 

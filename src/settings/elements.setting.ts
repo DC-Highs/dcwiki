@@ -1,131 +1,133 @@
+import DragonElements from "../enums/dragon-elements.enum"
+
 const elements = {
-    terra: {
+    [DragonElements.Terra]: {
         acronym: "e",
         nameKey: "TerraKey_DragonUtils",
         strongs: ["electric", "flame"],
         weaknesses: ["metal", "war"]
     },
-    flame: {
+    [DragonElements.Flame]: {
         acronym: "f",
         nameKey: "FlameKey_DragonUtils",
         strongs: ["nature", "ice"],
         weaknesses: ["sea", "terra"]
     },
-    sea: {
+    [DragonElements.Sea]: {
         acronym: "w",
         nameKey: "SeaKey_DragonUtils",
         strongs: ["flame", "war"],
         weaknesses: ["nature", "electric"]
     },
-    nature: {
+    [DragonElements.Nature]: {
         acronym: "p",
         nameKey: "NatureKey_DragonUtils",
         strongs: ["sea", "light"],
         weaknesses: ["flame", "ice"]
     },
-    electric: {
+    [DragonElements.Electric]: {
         acronym: "el",
         nameKey: "ElectricKey_DragonUtils",
         strongs: ["sea", "metal"],
         weaknesses: ["terra", "light"]
     },
-    ice: {
+    [DragonElements.Ice]: {
         acronym: "i",
         nameKey: "IceKey_DragonUtils",
         strongs: ["nature", "war"],
         weaknesses: ["flame", "metal"]
     },
-    metal: {
+    [DragonElements.Metal]: {
         acronym: "m",
         nameKey: "MetalKey_DragonUtils",
         strongs: ["terra", "ice"],
         weaknesses: ["electric", "dark"]
     },
-    dark: {
+    [DragonElements.Dark]: {
         acronym: "d",
         nameKey: "DarkKey_DragonUtils",
         strongs: ["metal", "light"],
         weaknesses: ["war"]
     },
-    light: {
+    [DragonElements.Light]: {
         acronym: "li",
         nameKey: "LightKey_DragonUtils",
         strongs: ["electric", "dark"],
         weaknesses: ["nature"]
     },
-    war: {
+    [DragonElements.War]: {
         acronym: "wr",
         nameKey: "WarKey_DragonUtils",
         strongs: ["terra", "dark"],
         weaknesses: ["sea", "ice"]
     },
-    pure: {
+    [DragonElements.Pure]: {
         acronym: "pu",
         nameKey: "PureKey_DragonUtils",
         strongs: ["wind"],
         weaknesses: ["primal"]
     },
-    legend: {
+    [DragonElements.Legend]: {
         acronym: "l",
         nameKey: "LegendKey_DragonUtils",
         strongs: ["primal"],
         weaknesses: ["pure"]
     },
-    primal: {
+    [DragonElements.Primal]: {
         acronym: "pr",
         nameKey: "tid_nw_hud_element_primal",
         strongs: ["pure"],
         weaknesses: ["time"]
     },
-    wind: {
+    [DragonElements.Wind]: {
         acronym: "wd",
         nameKey: "tid_nw_hud_element_wind",
         strongs: ["time"],
         weaknesses: ["legend"]
     },
-    time: {
+    [DragonElements.Time]: {
         acronym: "ti",
         nameKey: "tid_nw_hud_element_time",
         strongs: ["legend"],
         weaknesses: ["wind"]
     },
-    happy: {
+    [DragonElements.Happy]: {
         acronym: "hp",
         nameKey: "tid_nw_hud_element_happiness",
         strongs: ["chaos", "magic"],
         weaknesses: []
     },
-    chaos: {
+    [DragonElements.Chaos]: {
         acronym: "ch",
         nameKey: "tid_nw_hud_element_chaos",
         strongs: ["magic", "soul"],
         weaknesses: []
     },
-    magic: {
+    [DragonElements.Magic]: {
         acronym: "mg",
         nameKey: "tid_nw_hud_element_magic",
         strongs: ["soul", "beauty"],
         weaknesses: []
     },
-    soul: {
+    [DragonElements.Soul]: {
         acronym: "so",
         nameKey: "tid_nw_hud_element_soul",
         strongs: ["dream", "beauty"],
         weaknesses: []
     },
-    beauty: {
+    [DragonElements.Beauty]: {
         acronym: "bt",
         nameKey: "tid_nw_hud_element_beauty",
         strongs: ["dream", "happy"],
         weaknesses: []
     },
-    dream: {
+    [DragonElements.Dream]: {
         acronym: "dr",
         nameKey: "tid_nw_hud_element_dream",
         strongs: ["happy", "chaos"],
         weaknesses: []
     },
-    physical: {
+    [DragonElements.Physical]: {
         acronym: "ph",
         name: "Physical",
         strongs: [],

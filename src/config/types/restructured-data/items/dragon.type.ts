@@ -42,7 +42,7 @@ export interface RestructuredDragon {
     breeding_time_b: number
     base_attack: number
     base_life: number
-    dragon_ownership_id: number
+    ownership_id: number
     buy_price: RestructuredBuyPrice
     sell_price: RestructuredSellPrice
     tags?: string[]
