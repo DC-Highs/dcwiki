@@ -2,10 +2,10 @@ export type ConvertValueFunction = (value: any) => any
 
 export type RestructureObjectOptions = {
     rawDict: any,
-    keysToRemove: string[],
-    keysToRename: [string, string][],
-    fieldsToAdd: [string, any][],
-    fieldsToConvertValue: [string, ConvertValueFunction][]
+    keysToRemove?: string[],
+    keysToRename?: [string, string][],
+    fieldsToAdd?: [string, any][],
+    fieldsToConvertValue?: [string, ConvertValueFunction][]
 }
 
 function restructureObject({

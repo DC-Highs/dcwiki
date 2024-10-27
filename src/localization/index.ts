@@ -15,11 +15,21 @@ import type {
 
 export type AnyLocalization = LocalizationData | Localization
 
+export type LocalizationOptions = {
+    data: LocalizationData
+    language?: string
+    endpointUrl?: string
+}
+
 class Localization {
+    public readonly endpointUrl?: string
+    public readonly language?: string
     private arrayData: LocalizationArrayData = []
     private objectData: LocalizationObjectData = {}
 
-    public constructor(data: LocalizationData = {}) {
+    public constructor({ data, endpointUrl, language }: LocalizationOptions) {
+        this.endpointUrl = endpointUrl
+        this.language = language
         this.setData(data)
     }
 
@@ -61,15 +71,24 @@ class Localization {
         return Array.isArray(data)
     }
 
+    public static buildEndpointUrl(language: string): string {
+        return `https://sp-translations.socialpointgames.com/deploy/dc/android/prod/dc_android_${language}_prod_wetd46pWuR8J5CmS.json`
+    }
+
     public static async fetch(language: string): Promise<LocalizationData> {
-        const url = `https://sp-translations.socialpointgames.com/deploy/dc/android/prod/dc_android_${language}_prod_wetd46pWuR8J5CmS.json`
+        const url = Localization.buildEndpointUrl(language)
         const response = await axios.get(url)
         return response.data as LocalizationData
     }
 
     public static async create(language: string) {
         const data = await Localization.fetch(language)
-        return new Localization(data)
+
+        return new Localization({
+            data: data,
+            language: language,
+            endpointUrl: Localization.buildEndpointUrl(language)
+        })
     }
 
     public getValueFromKey(key: string): string | undefined {
@@ -224,7 +243,7 @@ class Localization {
             return anyLocalization
         }
 
-        return new Localization(anyLocalization)
+        return new Localization({ data: anyLocalization })
     }
 
     private static compareObjects(

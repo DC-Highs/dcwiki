@@ -3,12 +3,35 @@ import axios from "axios"
 
 import { RestructuredItems } from "./types/restructured-data/index.type"
 import objectKeysConversor from "../utils/object-keys-conversor.util"
+import DragonRestructurer from "./restructurers/dragon.restructurer"
 import { CreateConfigOptions } from "./types/index.type"
 import { GameConfigData } from "./types/data.type"
 import Localization from "../localization"
 
+export type ConfigOptions = {
+    rawData: GameConfigData
+    endpointUrl?: string
+    token?: string
+}
+
 class Config {
-    public constructor(public readonly data: GameConfigData) {}
+    private readonly rawData: GameConfigData
+    public readonly endpointUrl?: string
+    public readonly token?: string 
+
+    public constructor({
+        rawData,
+        endpointUrl,
+        token
+    }: ConfigOptions) {
+        this.rawData = rawData
+        this.endpointUrl = endpointUrl
+        this.token = token
+    }
+
+    public get data() {
+        return this.rawData.game_data.config
+    }
 
     public static async create({
         endpointUrl,
@@ -28,11 +51,15 @@ class Config {
 
         const response = await axios.get(endpointUrl)
 
-        return new Config(response.data)
+        return new Config({
+            rawData: response.data,
+            endpointUrl: endpointUrl,
+            token: token
+        })
     }
 
     public restructure(localization: Localization) {
-        const config = this.data.game_data.config
+        const config = this.rawData.game_data.config
 
         const translate = localization.translate.bind(localization)
         const translatedItems = config.items.map(translate)
@@ -40,17 +67,20 @@ class Config {
         const preRestructuredItems = objectKeysConversor.replace({
             oldString: " ",
             newString: "_",
-            object: objectKeysConversor.toCamelCase(
-                objectKeysConversor.toPlural(
-                    objectKeysConversor.toLowerCase(
-                        groupBy(translatedItems, "group_type")
-                    )
+            object:  objectKeysConversor.toPlural(
+                objectKeysConversor.toLowerCase(
+                    groupBy(translatedItems, "group_type")
                 )
             )
         }) as RestructuredItems
-        
+
+        const dragonRestructurer = new DragonRestructurer()
+
         return {
-            items: preRestructuredItems
+            items: {
+                ...preRestructuredItems,
+                dragons: preRestructuredItems.dragons.map(dragonRestructurer.restructure)
+            }
         }
     }
 }
