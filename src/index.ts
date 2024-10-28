@@ -1,9 +1,16 @@
+import DragonFlashAnimation, { DragonFlashAnimationOptions } from "./static-files/dragon-flash-animation.static-file"
+import DragonSpineAnimation, { DragonSpineAnimationOptions } from "./static-files/dragon-spine-animation.static-file"
 import populateElementsSetting, { PopulatedElement } from "./helpers/populate-elements-setting.helper"
 import DragonThumbnail, { DragonThumbnailOptions } from "./static-files/dragon-thumb.static-file"
+import IslandPackage, { IslandPackageOptions } from "./static-files/island-package.static-file"
+import DragonSprite, { DragonSpriteOptions } from "./static-files/dragon-sprite.static-file"
+import Music, { MusicOptions } from "./static-files/music.static-file"
 import orbRecallReturn from "./settings/orb-recall-return.setting"
 import feedCosts from "./settings/feed-costs.setting"
 import elements from "./settings/elements.setting"
 import dragons from "./settings/dragons.setting"
+import islands from "./settings/islands.setting"
+import sounds from "./settings/sounds.setting"
 import Localization from "./localization"
 import Config from "./config"
 
@@ -27,6 +34,8 @@ export type Settings = {
     feedCosts: typeof feedCosts
     elements: { [key in keyof typeof elements]: PopulatedElement }
     orbRecallReturn: typeof orbRecallReturn
+    islands: typeof islands
+    sounds: typeof sounds
 }
 
 class DCWiki {
@@ -39,13 +48,13 @@ class DCWiki {
     public readonly staticFiles = {
         dragons: {
             getThumbnail: (options: DragonThumbnailOptions) => new DragonThumbnail(options),
-            getSprite: (options: any) => {},
-            getFlashAnimation: (options: any) => {},
-            getSpineAnimation: (options: any) => {}
+            getSprite: (options: DragonSpriteOptions) => new DragonSprite(options),
+            getFlashAnimation: (options: DragonFlashAnimationOptions) => new DragonFlashAnimation(options),
+            getSpineAnimation: (options: DragonSpineAnimationOptions) => new DragonSpineAnimation(options),
         },
-        getIslandPackage: (options: any) => {},
+        getIslandPackage: (options: IslandPackageOptions) => new IslandPackage(options),
         sounds: {
-            getMusic: (options: any) => {}
+            getMusic: (options: MusicOptions) => new Music(options),
         }
     }
 
@@ -75,6 +84,19 @@ class DCWiki {
                 extractAllFromThumbnail: (url: string) => {},
                 extractAllFromFlashAnimation: (url: string) => {},
                 extractAllFromSpineAnimation: (url: string) => {},
+            }
+        },
+        sounds: {
+            getMusicKeyNameFromTag: (tag: string) => {
+                const tagInLowerCase = tag.toLowerCase()
+                const musicName1 = `dc_${tagInLowerCase}_island`
+                const musicName2 = `_${tagInLowerCase}`
+
+                for (const musicKeyName of sounds.musicKeyNames) {
+                    if (musicKeyName.includes(musicName1) || musicKeyName.endsWith(musicName2)) {
+                        return musicKeyName
+                    }
+                }
             }
         },
         ai: {
@@ -107,7 +129,9 @@ class DCWiki {
                 elementSetting: elements,
                 localization: localization
             }),
-            orbRecallReturn: orbRecallReturn
+            orbRecallReturn: orbRecallReturn,
+            islands: islands,
+            sounds: sounds
         }
 
         this.isAuthenticated = config.token ? true : false
