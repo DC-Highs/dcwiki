@@ -1,12 +1,9 @@
-import DragonFlashAnimation, { DragonFlashAnimationOptions } from "./static-files/dragon-flash-animation.static-file"
-import DragonSpineAnimation, { DragonSpineAnimationOptions } from "./static-files/dragon-spine-animation.static-file"
 import populateElementsSetting, { PopulatedElement } from "./helpers/populate-elements-setting.helper"
-import DragonThumbnail, { DragonThumbnailOptions } from "./static-files/dragon-thumb.static-file"
-import IslandPackage, { IslandPackageOptions } from "./static-files/island-package.static-file"
-import DragonSprite, { DragonSpriteOptions } from "./static-files/dragon-sprite.static-file"
-import Music, { MusicOptions } from "./static-files/music.static-file"
 import orbRecallReturn from "./settings/orb-recall-return.setting"
+import staticFilesService from "./services/static-files.service"
+import calculatorsService from "./services/calculators.service"
 import feedCosts from "./settings/feed-costs.setting"
+import toolsService from "./services/tools.service"
 import elements from "./settings/elements.setting"
 import dragons from "./settings/dragons.setting"
 import islands from "./settings/islands.setting"
@@ -20,16 +17,20 @@ export type DCWikiOptions = {
     language: string
 }
 
-export type CreateDCWikiOptions = {
-    language: string
-    apiToken?: string
-    apiUserId?: string
-    apiEndpointUrl: string
-    apiFilter?: string[]
-    apiPlatform?: string
+export type CreateDCWikiApiOption = {
+    token?: string
+    endpointUrl: string
+    userId?: string
+    filter?: string[]
+    platform?: string
 }
 
-export type Settings = {
+export type CreateDCWikiOptions = {
+    language: string
+    api: CreateDCWikiApiOption
+}
+
+export type SettingsService = {
     dragons: typeof dragons
     feedCosts: typeof feedCosts
     elements: { [key in keyof typeof elements]: PopulatedElement }
@@ -38,80 +39,19 @@ export type Settings = {
     sounds: typeof sounds
 }
 
+export type StaticFilesService = typeof staticFilesService
+export type CalculatorsService = typeof calculatorsService
+export type ToolsService = typeof toolsService
+
 class DCWiki {
     public readonly localization: Localization
     public readonly config: Config
     public readonly language: string
-    public readonly settings: Settings
+    public readonly settings: SettingsService
     public readonly isAuthenticated: boolean
-
-    public readonly staticFiles = {
-        dragons: {
-            getThumbnail: (options: DragonThumbnailOptions) => new DragonThumbnail(options),
-            getSprite: (options: DragonSpriteOptions) => new DragonSprite(options),
-            getFlashAnimation: (options: DragonFlashAnimationOptions) => new DragonFlashAnimation(options),
-            getSpineAnimation: (options: DragonSpineAnimationOptions) => new DragonSpineAnimation(options),
-        },
-        getIslandPackage: (options: IslandPackageOptions) => new IslandPackage(options),
-        sounds: {
-            getMusic: (options: MusicOptions) => new Music(options),
-        }
-    }
-
-    public readonly calculators = {
-        dragons: {
-            calculateFeedCost: (options: any) => {},
-            calculateStatus: (options: any) => {},
-            calculateBreeding: (options: any) => {},
-            calculateRecallGain: (options: any) => {},
-            calculateAttackDamage: (options: any) => {},
-        },
-        elements: {
-            calculateWeaknesses: (options: any) => {},
-            calculateStrengths: (options: any) => {},
-        }
-    }
-
-    public readonly tools = {
-        urlExtractor: {
-            dragons: {
-                extractImageName: (url: string) => {},
-                extractId: (url: string) => {},
-                extractPhase: (url: string) => {},
-                extractSkin: (url: string) => {},
-                extractImageQuality: (url: string) => {},
-                extractAllFromSprite: (url: string) => {},
-                extractAllFromThumbnail: (url: string) => {},
-                extractAllFromFlashAnimation: (url: string) => {},
-                extractAllFromSpineAnimation: (url: string) => {},
-            }
-        },
-        sounds: {
-            getMusicKeyNameFromTag: (tag: string) => {
-                const tagInLowerCase = tag.toLowerCase()
-                const musicName1 = `dc_${tagInLowerCase}_island`
-                const musicName2 = `_${tagInLowerCase}`
-
-                for (const musicKeyName of sounds.musicKeyNames) {
-                    if (musicKeyName.includes(musicName1) || musicKeyName.endsWith(musicName2)) {
-                        return musicKeyName
-                    }
-                }
-            }
-        },
-        ai: {
-            dragons: {
-                phaseDetector: {
-                    init: () => {},
-                    predict: () => {},
-                },
-                elementsDetector: {
-                    init: () => {},
-                    predict: () => {},
-                }
-            }
-        }
-    }
+    public readonly staticFiles = staticFilesService
+    public readonly calculators = calculatorsService
+    public readonly tools = toolsService
 
     public constructor({
         config,
@@ -138,22 +78,18 @@ class DCWiki {
     }
 
     public static async create({
-        apiEndpointUrl,
-        apiToken,
-        apiUserId,
-        apiFilter,
-        apiPlatform,
-        language
+        language,
+        api
     }: CreateDCWikiOptions) {
         const localization = await Localization.create(language)
 
         const config = await Config.create({
-            endpointUrl: apiEndpointUrl,
-            token: apiToken,
-            userId: apiUserId,
+            endpointUrl: api.endpointUrl,
+            token: api.token,
+            userId: api.userId,
             language: language,
-            filter: apiFilter,
-            platform: apiPlatform
+            filter: api.filter,
+            platform: api.platform
         })
 
         return new DCWiki({

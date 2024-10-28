@@ -78,7 +78,7 @@ class Config {
         const preRestructuredItems = objectKeysConversor.replace({
             oldString: " ",
             newString: "_",
-            object:  objectKeysConversor.toPlural(
+            object: objectKeysConversor.toPlural(
                 objectKeysConversor.toLowerCase(
                     groupBy(translatedItems, "group_type")
                 )
