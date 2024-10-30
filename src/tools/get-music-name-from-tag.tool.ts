@@ -1,4 +1,4 @@
-import sounds from "../settings/sounds.setting"
+import soundsSetting from "../settings/sounds.setting"
 
 function getMusicKeyNameFromTag(tag: string) {
     const tagInLowerCase = tag.toLowerCase()

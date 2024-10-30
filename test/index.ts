@@ -1,5 +1,5 @@
 import StaticFileUrlPlatformPrefixies from "../src/enums/static-file-url-platform-prefixies.enum"
-import DragonSpriteQuality from "../src/enums/dragon-sprite-quality.enum"
+import dragonsSettingpriteQuality from "../src/enums/dragon-sprite-quality.enum"
 import DragonPhases from "../src/enums/dragon-phases.enum"
 import DCWiki from "../src"
 
@@ -10,6 +10,11 @@ import DCWiki from "../src"
             endpointUrl: "https://github.com/1Marcuth/Ei5qQZjQJ3V4S9jzpKbuhDTFR6StFepAeBKK8kbGyyC4rMBg1WM81317rvoUTquY/raw/main/data.json"
         },
     })
+
+    const result = dcwiki.calculators.dragons.calculateRecallGain({ level: 40 })
+    console.log(dcwiki.tools.validation.validateDragonLevelCompatibilityWithStars({ level: 10, stars: 2 }))
+
+    console.log(result)
 
     // dcwiki.localization.searchKeys({ query: "batata" })
 
@@ -63,7 +68,7 @@ import DCWiki from "../src"
 
     // await natureDragonThumbnail.download("natureDragon.png")
 
-    const restructuredConfig = dcwiki.config.restructure(dcwiki.localization)
+    // const restructuredConfig = dcwiki.config.restructure(dcwiki.localization)
 
     // const restructuredConfig = dcwiki.config.restructure(dcwiki.localization)
     // console.log(restructuredConfig.items)

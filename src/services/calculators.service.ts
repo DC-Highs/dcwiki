@@ -1,9 +1,12 @@
+import calculateOrbRecallGain from "../calculators/calculate-orb-recall-gain.calculator"
+import calculateFeedCost from "../calculators/calculate-feed-cost.caclulator"
+
 const calculatorsService = {
     dragons: {
-        calculateFeedCost: (options: any) => {},
+        calculateFeedCost: calculateFeedCost,
         calculateStatus: (options: any) => {},
         calculateBreeding: (options: any) => {},
-        calculateRecallGain: (options: any) => {},
+        calculateRecallGain: calculateOrbRecallGain,
         calculateAttackDamage: (options: any) => {},
     },
     elements: {

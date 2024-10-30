@@ -1,6 +1,6 @@
 import DragonElements from "../enums/dragon-elements.enum"
 
-const elements = {
+const elementsSetting = {
     [DragonElements.Terra]: {
         acronym: "e",
         nameKey: "TerraKey_DragonUtils",
@@ -135,4 +135,4 @@ const elements = {
     }
 }
 
-export default elements
+export default elementsSetting

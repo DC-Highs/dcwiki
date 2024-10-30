@@ -1,4 +1,4 @@
-const feedCosts = [
+const feedCostsSetting = [
     {
         part: 0,
         total: 0
@@ -281,4 +281,4 @@ const feedCosts = [
     }
 ]
 
-export default feedCosts
+export default feedCostsSetting

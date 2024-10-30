@@ -1,4 +1,4 @@
-import elements from "../settings/elements.setting"
+import elementsSetting from "../settings/elements.setting"
 import Localization from "../localization"
 
 export type PopulatedElement = {
@@ -10,12 +10,12 @@ export type PopulatedElement = {
 }
 
 export type PopulateElementsSettingOptions = {
-    elementSetting: typeof elements
+    elementSetting: typeof elementsSetting
     localization: Localization
 }
 
 function populateElementsSetting({ elementSetting, localization }: PopulateElementsSettingOptions) {
-    const populatedElements: { [key in keyof typeof elements]: PopulatedElement } = Object
+    const populatedElements: { [key in keyof typeof elementsSetting]: PopulatedElement } = Object
         .entries(elementSetting)
         .reduce((acc, [key, data]) => {
             let elementName: string | undefined
@@ -32,10 +32,10 @@ function populateElementsSetting({ elementSetting, localization }: PopulateEleme
                 weaknesses: data.weaknesses.map(weakness => weakness.toLowerCase())
             }
 
-            acc[key as keyof typeof elements] = populatedElement
+            acc[key as keyof typeof elementsSetting] = populatedElement
 
             return acc
-        }, {} as { [key in keyof typeof elements]: PopulatedElement })
+        }, {} as { [key in keyof typeof elementsSetting]: PopulatedElement })
 
     return populatedElements
 }

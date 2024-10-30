@@ -1,13 +1,7 @@
-import populateElementsSetting, { PopulatedElement } from "./helpers/populate-elements-setting.helper"
-import orbRecallReturn from "./settings/orb-recall-return.setting"
 import staticFilesService from "./services/static-files.service"
 import calculatorsService from "./services/calculators.service"
-import feedCosts from "./settings/feed-costs.setting"
+import SettingsService from "./services/settings.service"
 import toolsService from "./services/tools.service"
-import elements from "./settings/elements.setting"
-import dragons from "./settings/dragons.setting"
-import islands from "./settings/islands.setting"
-import sounds from "./settings/sounds.setting"
 import Localization from "./localization"
 import Config from "./config"
 
@@ -28,15 +22,6 @@ export type CreateDCWikiApiOption = {
 export type CreateDCWikiOptions = {
     language: string
     api: CreateDCWikiApiOption
-}
-
-export type SettingsService = {
-    dragons: typeof dragons
-    feedCosts: typeof feedCosts
-    elements: { [key in keyof typeof elements]: PopulatedElement }
-    orbRecallReturn: typeof orbRecallReturn
-    islands: typeof islands
-    sounds: typeof sounds
 }
 
 export type StaticFilesService = typeof staticFilesService
@@ -61,19 +46,7 @@ class DCWiki {
         this.language = language
         this.localization = localization
         this.config = config
-    
-        this.settings = {
-            dragons: dragons,
-            feedCosts: feedCosts,
-            elements: populateElementsSetting({
-                elementSetting: elements,
-                localization: localization
-            }),
-            orbRecallReturn: orbRecallReturn,
-            islands: islands,
-            sounds: sounds
-        }
-
+        this.settings = new SettingsService({ localization: localization })
         this.isAuthenticated = config.token ? true : false
     }
 

@@ -13,7 +13,7 @@ export type CompileOptions = {
 }
 
 export type CompileArrayOptions = {
-    arrayData: Record<string, any>[]
+    data: Record<string, any>[]
     context: Record<string, any>
 }
 
@@ -96,8 +96,8 @@ class DataCompiler {
         return Array.isArray(value) && value.every(item => isObject(item))
     }
     
-    public compileArray({ arrayData, context }: CompileArrayOptions) {
-        return arrayData.map(item => isObject(item) ? this.compile({ data: item, context: context }) : item)
+    public compileMany({ data, context }: CompileArrayOptions) {
+        return data.map(item => isObject(item) ? this.compile({ data: item, context: context }) : item)
     }    
 
     public compile({ data, context }: CompileOptions) {
@@ -106,7 +106,7 @@ class DataCompiler {
         try {
             for (const [key, value] of Object.entries(dataCopy)) {
                 if (this.isArrayOfObjects(value)) {
-                    data[key] = this.compileArray({ arrayData: value, context: context })
+                    data[key] = this.compileMany({ data: value, context: context })
                 } else if (isObject(value)) {
                     data[key] = this.compile({ data: value, context: context })
                 }

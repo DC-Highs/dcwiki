@@ -1,6 +1,6 @@
 import IslandTypes from "../enums/island-types.enum"
 
-const islands = {
+const islandsSetting = {
     fogIslands: {
         type: IslandTypes.FogIslands
     },
@@ -24,4 +24,4 @@ const islands = {
     }
 }
 
-export default islands
+export default islandsSetting

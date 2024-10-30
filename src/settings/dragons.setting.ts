@@ -3,10 +3,12 @@ import DragonRarities from "../enums/dragon-rarities.enum"
 import DragonPhases from "../enums/dragon-phases.enum"
 import DragonRanks from "../enums/dragon-ranks.enum"
 
-const dragons = {
+const dragonsSetting = {
     levels: {
         minimum: 1,
-        maximum: 70,  
+        maximum: 70,
+        maximumWithoutEmpowerment: 40,
+        minimumToEmpower: 7
     },
     ranks: {
         [DragonRanks.BronzeIII]: {
@@ -46,33 +48,39 @@ const dragons = {
             nameKey: "tid_rank_platinum_i"
         },
     },
-    empowerment: [
-        {
-            requestedOrbs: 120,
-            usableJokerOrbs: 25,
-            dragonMaximumLevel: 45
+    empowerment: {
+        starts: {
+            minimum: 0,
+            maximum: 5,
         },
-        {
-            requestedOrbs: 200,
-            usableJokerOrbs: 50,
-            dragonMaximumLevel: 50
-        },
-        {
-            requestedOrbs: 320,
-            usableJokerOrbs: 80,
-            dragonMaximumLevel: 55
-        },
-        {
-            requestedOrbs: 560,
-            usableJokerOrbs: 170,
-            dragonMaximumLevel: 60
-        },
-        {
-            requestedOrbs: 800,
-            usableJokerOrbs: 240,
-            dragonMaximumLevel: 70
-        },
-    ],
+        stages: [
+            {
+                requestedOrbs: 120,
+                usableJokerOrbs: 25,
+                dragonMaximumLevel: 45
+            },
+            {
+                requestedOrbs: 200,
+                usableJokerOrbs: 50,
+                dragonMaximumLevel: 50
+            },
+            {
+                requestedOrbs: 320,
+                usableJokerOrbs: 80,
+                dragonMaximumLevel: 55
+            },
+            {
+                requestedOrbs: 560,
+                usableJokerOrbs: 170,
+                dragonMaximumLevel: 60
+            },
+            {
+                requestedOrbs: 800,
+                usableJokerOrbs: 240,
+                dragonMaximumLevel: 70
+            }
+        ],
+    },
     categories: {
         basic: DragonCategories.Basic,
         proBasic: DragonCategories.ProBasic,
@@ -103,4 +111,4 @@ const dragons = {
     }
 }
 
-export default dragons
+export default dragonsSetting
