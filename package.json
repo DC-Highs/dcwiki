@@ -4,7 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "ts-node test/index.ts"
+    "test": "ts-node test/index.ts",
+    "build:clean": "rimraf dist",
+    "compile": "tsc -b ./tsconfig.cjs.json ./tsconfig.esm.json ./tsconfig.types.json",
+    "build": "npm-run-all build:clean compile generate-exports && node ./dev-scripts/prepare-package-json.js",
+    "generate-exports": "node dev-scripts/generate-exports.cjs"
   },
   "keywords": [],
   "author": "",
@@ -13,6 +17,8 @@
     "@types/lodash": "^4.17.12",
     "@types/node": "^22.8.1",
     "@types/pluralize": "^0.0.33",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^6.0.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.6.3"
   },
@@ -22,5 +28,355 @@
     "client-helper": "^0.1.0",
     "lodash": "^4.17.21",
     "pluralize": "^8.0.0"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/esm/index.js",
+      "require": "./dist/esm/index.js",
+      "default": "./dist/esm/index.js",
+      "types": "./dist/types/index.d.ts"
+    },
+    "./calculators/calculate-breeding.calculator": {
+      "import": "./dist/esm/calculators/calculate-breeding.calculator.js",
+      "require": "./dist/cjs/calculators/calculate-breeding.calculator.js",
+      "default": "./dist/esm/calculators/calculate-breeding.calculator.js",
+      "types": "./dist/types/calculators/calculate-breeding.calculator.d.ts"
+    },
+    "./calculators/calculate-feed-cost.caclulator": {
+      "import": "./dist/esm/calculators/calculate-feed-cost.caclulator.js",
+      "require": "./dist/cjs/calculators/calculate-feed-cost.caclulator.js",
+      "default": "./dist/esm/calculators/calculate-feed-cost.caclulator.js",
+      "types": "./dist/types/calculators/calculate-feed-cost.caclulator.d.ts"
+    },
+    "./calculators/calculate-orb-recall-gain.calculator": {
+      "import": "./dist/esm/calculators/calculate-orb-recall-gain.calculator.js",
+      "require": "./dist/cjs/calculators/calculate-orb-recall-gain.calculator.js",
+      "default": "./dist/esm/calculators/calculate-orb-recall-gain.calculator.js",
+      "types": "./dist/types/calculators/calculate-orb-recall-gain.calculator.d.ts"
+    },
+    "./config/data-compiler": {
+      "import": "./dist/esm/config/data-compiler.js",
+      "require": "./dist/cjs/config/data-compiler.js",
+      "default": "./dist/esm/config/data-compiler.js",
+      "types": "./dist/types/config/data-compiler.d.ts"
+    },
+    "./config": {
+      "import": "./dist/esm/config/index.js",
+      "require": "./dist/cjs/config/index.js",
+      "default": "./dist/esm/config/index.js",
+      "types": "./dist/types/config/index.d.ts"
+    },
+    "./config/restructured-config": {
+      "import": "./dist/esm/config/restructured-config.js",
+      "require": "./dist/cjs/config/restructured-config.js",
+      "default": "./dist/esm/config/restructured-config.js",
+      "types": "./dist/types/config/restructured-config.d.ts"
+    },
+    "./config/restructurers/dragon.restructurer": {
+      "import": "./dist/esm/config/restructurers/dragon.restructurer.js",
+      "require": "./dist/cjs/config/restructurers/dragon.restructurer.js",
+      "default": "./dist/esm/config/restructurers/dragon.restructurer.js",
+      "types": "./dist/types/config/restructurers/dragon.restructurer.d.ts"
+    },
+    "./config/types/data.type": {
+      "import": "./dist/esm/config/types/data.type.js",
+      "require": "./dist/cjs/config/types/data.type.js",
+      "default": "./dist/esm/config/types/data.type.js",
+      "types": "./dist/types/config/types/data.type.d.ts"
+    },
+    "./config/types.type": {
+      "import": "./dist/esm/config/types/index.type.js",
+      "require": "./dist/cjs/config/types/index.type.js",
+      "default": "./dist/esm/config/types/index.type.js",
+      "types": "./dist/types/config/types/index.type.d.ts"
+    },
+    "./config/types/restructured-data.type": {
+      "import": "./dist/esm/config/types/restructured-data/index.type.js",
+      "require": "./dist/cjs/config/types/restructured-data/index.type.js",
+      "default": "./dist/esm/config/types/restructured-data/index.type.js",
+      "types": "./dist/types/config/types/restructured-data/index.type.d.ts"
+    },
+    "./config/types/restructured-data/items/dragon.type": {
+      "import": "./dist/esm/config/types/restructured-data/items/dragon.type.js",
+      "require": "./dist/cjs/config/types/restructured-data/items/dragon.type.js",
+      "default": "./dist/esm/config/types/restructured-data/items/dragon.type.js",
+      "types": "./dist/types/config/types/restructured-data/items/dragon.type.d.ts"
+    },
+    "./config/types/restructured-data/items.type": {
+      "import": "./dist/esm/config/types/restructured-data/items/index.type.js",
+      "require": "./dist/cjs/config/types/restructured-data/items/index.type.js",
+      "default": "./dist/esm/config/types/restructured-data/items/index.type.js",
+      "types": "./dist/types/config/types/restructured-data/items/index.type.d.ts"
+    },
+    "./enums/config-languages.enum": {
+      "import": "./dist/esm/enums/config-languages.enum.js",
+      "require": "./dist/cjs/enums/config-languages.enum.js",
+      "default": "./dist/esm/enums/config-languages.enum.js",
+      "types": "./dist/types/enums/config-languages.enum.d.ts"
+    },
+    "./enums/config-platform.enum": {
+      "import": "./dist/esm/enums/config-platform.enum.js",
+      "require": "./dist/cjs/enums/config-platform.enum.js",
+      "default": "./dist/esm/enums/config-platform.enum.js",
+      "types": "./dist/types/enums/config-platform.enum.d.ts"
+    },
+    "./enums/dragon-categories.enum": {
+      "import": "./dist/esm/enums/dragon-categories.enum.js",
+      "require": "./dist/cjs/enums/dragon-categories.enum.js",
+      "default": "./dist/esm/enums/dragon-categories.enum.js",
+      "types": "./dist/types/enums/dragon-categories.enum.d.ts"
+    },
+    "./enums/dragon-elements.enum": {
+      "import": "./dist/esm/enums/dragon-elements.enum.js",
+      "require": "./dist/cjs/enums/dragon-elements.enum.js",
+      "default": "./dist/esm/enums/dragon-elements.enum.js",
+      "types": "./dist/types/enums/dragon-elements.enum.d.ts"
+    },
+    "./enums/dragon-phases.enum": {
+      "import": "./dist/esm/enums/dragon-phases.enum.js",
+      "require": "./dist/cjs/enums/dragon-phases.enum.js",
+      "default": "./dist/esm/enums/dragon-phases.enum.js",
+      "types": "./dist/types/enums/dragon-phases.enum.d.ts"
+    },
+    "./enums/dragon-ranks.enum": {
+      "import": "./dist/esm/enums/dragon-ranks.enum.js",
+      "require": "./dist/cjs/enums/dragon-ranks.enum.js",
+      "default": "./dist/esm/enums/dragon-ranks.enum.js",
+      "types": "./dist/types/enums/dragon-ranks.enum.d.ts"
+    },
+    "./enums/dragon-rarities.enum": {
+      "import": "./dist/esm/enums/dragon-rarities.enum.js",
+      "require": "./dist/cjs/enums/dragon-rarities.enum.js",
+      "default": "./dist/esm/enums/dragon-rarities.enum.js",
+      "types": "./dist/types/enums/dragon-rarities.enum.d.ts"
+    },
+    "./enums/dragon-sprite-quality.enum": {
+      "import": "./dist/esm/enums/dragon-sprite-quality.enum.js",
+      "require": "./dist/cjs/enums/dragon-sprite-quality.enum.js",
+      "default": "./dist/esm/enums/dragon-sprite-quality.enum.js",
+      "types": "./dist/types/enums/dragon-sprite-quality.enum.d.ts"
+    },
+    "./enums/island-types.enum": {
+      "import": "./dist/esm/enums/island-types.enum.js",
+      "require": "./dist/cjs/enums/island-types.enum.js",
+      "default": "./dist/esm/enums/island-types.enum.js",
+      "types": "./dist/types/enums/island-types.enum.d.ts"
+    },
+    "./enums/static-file-url-platform-prefixies.enum": {
+      "import": "./dist/esm/enums/static-file-url-platform-prefixies.enum.js",
+      "require": "./dist/cjs/enums/static-file-url-platform-prefixies.enum.js",
+      "default": "./dist/esm/enums/static-file-url-platform-prefixies.enum.js",
+      "types": "./dist/types/enums/static-file-url-platform-prefixies.enum.d.ts"
+    },
+    "./enums/texture-compression-formats.enum": {
+      "import": "./dist/esm/enums/texture-compression-formats.enum.js",
+      "require": "./dist/cjs/enums/texture-compression-formats.enum.js",
+      "default": "./dist/esm/enums/texture-compression-formats.enum.js",
+      "types": "./dist/types/enums/texture-compression-formats.enum.d.ts"
+    },
+    "./helpers/dragons-set.helper": {
+      "import": "./dist/esm/helpers/dragons-set.helper.js",
+      "require": "./dist/cjs/helpers/dragons-set.helper.js",
+      "default": "./dist/esm/helpers/dragons-set.helper.js",
+      "types": "./dist/types/helpers/dragons-set.helper.d.ts"
+    },
+    "./helpers/populate-elements-setting.helper": {
+      "import": "./dist/esm/helpers/populate-elements-setting.helper.js",
+      "require": "./dist/cjs/helpers/populate-elements-setting.helper.js",
+      "default": "./dist/esm/helpers/populate-elements-setting.helper.js",
+      "types": "./dist/types/helpers/populate-elements-setting.helper.d.ts"
+    },
+    "./localization": {
+      "import": "./dist/esm/localization/index.js",
+      "require": "./dist/cjs/localization/index.js",
+      "default": "./dist/esm/localization/index.js",
+      "types": "./dist/types/localization/index.d.ts"
+    },
+    "./localization/types.localization": {
+      "import": "./dist/esm/localization/types.localization.js",
+      "require": "./dist/cjs/localization/types.localization.js",
+      "default": "./dist/esm/localization/types.localization.js",
+      "types": "./dist/types/localization/types.localization.d.ts"
+    },
+    "./services/calculators.service": {
+      "import": "./dist/esm/services/calculators.service.js",
+      "require": "./dist/cjs/services/calculators.service.js",
+      "default": "./dist/esm/services/calculators.service.js",
+      "types": "./dist/types/services/calculators.service.d.ts"
+    },
+    "./services/settings.service": {
+      "import": "./dist/esm/services/settings.service.js",
+      "require": "./dist/cjs/services/settings.service.js",
+      "default": "./dist/esm/services/settings.service.js",
+      "types": "./dist/types/services/settings.service.d.ts"
+    },
+    "./services/sounds.service": {
+      "import": "./dist/esm/services/sounds.service.js",
+      "require": "./dist/cjs/services/sounds.service.js",
+      "default": "./dist/esm/services/sounds.service.js",
+      "types": "./dist/types/services/sounds.service.d.ts"
+    },
+    "./services/static-files.service": {
+      "import": "./dist/esm/services/static-files.service.js",
+      "require": "./dist/cjs/services/static-files.service.js",
+      "default": "./dist/esm/services/static-files.service.js",
+      "types": "./dist/types/services/static-files.service.d.ts"
+    },
+    "./services/tools.service": {
+      "import": "./dist/esm/services/tools.service.js",
+      "require": "./dist/cjs/services/tools.service.js",
+      "default": "./dist/esm/services/tools.service.js",
+      "types": "./dist/types/services/tools.service.d.ts"
+    },
+    "./services/url-extractor.service": {
+      "import": "./dist/esm/services/url-extractor.service.js",
+      "require": "./dist/cjs/services/url-extractor.service.js",
+      "default": "./dist/esm/services/url-extractor.service.js",
+      "types": "./dist/types/services/url-extractor.service.d.ts"
+    },
+    "./services/validation.service": {
+      "import": "./dist/esm/services/validation.service.js",
+      "require": "./dist/cjs/services/validation.service.js",
+      "default": "./dist/esm/services/validation.service.js",
+      "types": "./dist/types/services/validation.service.d.ts"
+    },
+    "./settings/dragons.setting": {
+      "import": "./dist/esm/settings/dragons.setting.js",
+      "require": "./dist/cjs/settings/dragons.setting.js",
+      "default": "./dist/esm/settings/dragons.setting.js",
+      "types": "./dist/types/settings/dragons.setting.d.ts"
+    },
+    "./settings/elements.setting": {
+      "import": "./dist/esm/settings/elements.setting.js",
+      "require": "./dist/cjs/settings/elements.setting.js",
+      "default": "./dist/esm/settings/elements.setting.js",
+      "types": "./dist/types/settings/elements.setting.d.ts"
+    },
+    "./settings/feed-costs.setting": {
+      "import": "./dist/esm/settings/feed-costs.setting.js",
+      "require": "./dist/cjs/settings/feed-costs.setting.js",
+      "default": "./dist/esm/settings/feed-costs.setting.js",
+      "types": "./dist/types/settings/feed-costs.setting.d.ts"
+    },
+    "./settings/islands.setting": {
+      "import": "./dist/esm/settings/islands.setting.js",
+      "require": "./dist/cjs/settings/islands.setting.js",
+      "default": "./dist/esm/settings/islands.setting.js",
+      "types": "./dist/types/settings/islands.setting.d.ts"
+    },
+    "./settings/orb-recall-return.setting": {
+      "import": "./dist/esm/settings/orb-recall-return.setting.js",
+      "require": "./dist/cjs/settings/orb-recall-return.setting.js",
+      "default": "./dist/esm/settings/orb-recall-return.setting.js",
+      "types": "./dist/types/settings/orb-recall-return.setting.d.ts"
+    },
+    "./settings/sounds.setting": {
+      "import": "./dist/esm/settings/sounds.setting.js",
+      "require": "./dist/cjs/settings/sounds.setting.js",
+      "default": "./dist/esm/settings/sounds.setting.js",
+      "types": "./dist/types/settings/sounds.setting.d.ts"
+    },
+    "./static-files/base-downloader.static-file": {
+      "import": "./dist/esm/static-files/base-downloader.static-file.js",
+      "require": "./dist/cjs/static-files/base-downloader.static-file.js",
+      "default": "./dist/esm/static-files/base-downloader.static-file.js",
+      "types": "./dist/types/static-files/base-downloader.static-file.d.ts"
+    },
+    "./static-files/dragon-flash-animation.static-file": {
+      "import": "./dist/esm/static-files/dragon-flash-animation.static-file.js",
+      "require": "./dist/cjs/static-files/dragon-flash-animation.static-file.js",
+      "default": "./dist/esm/static-files/dragon-flash-animation.static-file.js",
+      "types": "./dist/types/static-files/dragon-flash-animation.static-file.d.ts"
+    },
+    "./static-files/dragon-spine-animation.static-file": {
+      "import": "./dist/esm/static-files/dragon-spine-animation.static-file.js",
+      "require": "./dist/cjs/static-files/dragon-spine-animation.static-file.js",
+      "default": "./dist/esm/static-files/dragon-spine-animation.static-file.js",
+      "types": "./dist/types/static-files/dragon-spine-animation.static-file.d.ts"
+    },
+    "./static-files/dragon-sprite.static-file": {
+      "import": "./dist/esm/static-files/dragon-sprite.static-file.js",
+      "require": "./dist/cjs/static-files/dragon-sprite.static-file.js",
+      "default": "./dist/esm/static-files/dragon-sprite.static-file.js",
+      "types": "./dist/types/static-files/dragon-sprite.static-file.d.ts"
+    },
+    "./static-files/dragon-thumb.static-file": {
+      "import": "./dist/esm/static-files/dragon-thumb.static-file.js",
+      "require": "./dist/cjs/static-files/dragon-thumb.static-file.js",
+      "default": "./dist/esm/static-files/dragon-thumb.static-file.js",
+      "types": "./dist/types/static-files/dragon-thumb.static-file.d.ts"
+    },
+    "./static-files/island-package.static-file": {
+      "import": "./dist/esm/static-files/island-package.static-file.js",
+      "require": "./dist/cjs/static-files/island-package.static-file.js",
+      "default": "./dist/esm/static-files/island-package.static-file.js",
+      "types": "./dist/types/static-files/island-package.static-file.d.ts"
+    },
+    "./static-files/music.static-file": {
+      "import": "./dist/esm/static-files/music.static-file.js",
+      "require": "./dist/cjs/static-files/music.static-file.js",
+      "default": "./dist/esm/static-files/music.static-file.js",
+      "types": "./dist/types/static-files/music.static-file.d.ts"
+    },
+    "./tools/get-music-name-from-tag.tool": {
+      "import": "./dist/esm/tools/get-music-name-from-tag.tool.js",
+      "require": "./dist/cjs/tools/get-music-name-from-tag.tool.js",
+      "default": "./dist/esm/tools/get-music-name-from-tag.tool.js",
+      "types": "./dist/types/tools/get-music-name-from-tag.tool.d.ts"
+    },
+    "./tools/validate-dragon-level-compatibility-with-stars.tool": {
+      "import": "./dist/esm/tools/validate-dragon-level-compatibility-with-stars.tool.js",
+      "require": "./dist/cjs/tools/validate-dragon-level-compatibility-with-stars.tool.js",
+      "default": "./dist/esm/tools/validate-dragon-level-compatibility-with-stars.tool.js",
+      "types": "./dist/types/tools/validate-dragon-level-compatibility-with-stars.tool.d.ts"
+    },
+    "./tools/validate-dragon-level.tool": {
+      "import": "./dist/esm/tools/validate-dragon-level.tool.js",
+      "require": "./dist/cjs/tools/validate-dragon-level.tool.js",
+      "default": "./dist/esm/tools/validate-dragon-level.tool.js",
+      "types": "./dist/types/tools/validate-dragon-level.tool.d.ts"
+    },
+    "./tools/validate-dragon-stars.tool": {
+      "import": "./dist/esm/tools/validate-dragon-stars.tool.js",
+      "require": "./dist/cjs/tools/validate-dragon-stars.tool.js",
+      "default": "./dist/esm/tools/validate-dragon-stars.tool.js",
+      "types": "./dist/types/tools/validate-dragon-stars.tool.d.ts"
+    },
+    "./utils/file-manager.util": {
+      "import": "./dist/esm/utils/file-manager.util.js",
+      "require": "./dist/cjs/utils/file-manager.util.js",
+      "default": "./dist/esm/utils/file-manager.util.js",
+      "types": "./dist/types/utils/file-manager.util.d.ts"
+    },
+    "./utils/number-to-boolean.util": {
+      "import": "./dist/esm/utils/number-to-boolean.util.js",
+      "require": "./dist/cjs/utils/number-to-boolean.util.js",
+      "default": "./dist/esm/utils/number-to-boolean.util.js",
+      "types": "./dist/types/utils/number-to-boolean.util.d.ts"
+    },
+    "./utils/object-keys-conversor.util": {
+      "import": "./dist/esm/utils/object-keys-conversor.util.js",
+      "require": "./dist/cjs/utils/object-keys-conversor.util.js",
+      "default": "./dist/esm/utils/object-keys-conversor.util.js",
+      "types": "./dist/types/utils/object-keys-conversor.util.d.ts"
+    },
+    "./utils/restructure-object.util": {
+      "import": "./dist/esm/utils/restructure-object.util.js",
+      "require": "./dist/cjs/utils/restructure-object.util.js",
+      "default": "./dist/esm/utils/restructure-object.util.js",
+      "types": "./dist/types/utils/restructure-object.util.d.ts"
+    },
+    "./utils/rgb-to-hexadecimal.util": {
+      "import": "./dist/esm/utils/rgb-to-hexadecimal.util.js",
+      "require": "./dist/cjs/utils/rgb-to-hexadecimal.util.js",
+      "default": "./dist/esm/utils/rgb-to-hexadecimal.util.js",
+      "types": "./dist/types/utils/rgb-to-hexadecimal.util.d.ts"
+    },
+    "./utils/text.util": {
+      "import": "./dist/esm/utils/text.util.js",
+      "require": "./dist/cjs/utils/text.util.js",
+      "default": "./dist/esm/utils/text.util.js",
+      "types": "./dist/types/utils/text.util.d.ts"
+    }
   }
 }

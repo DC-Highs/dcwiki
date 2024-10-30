@@ -1,5 +1,3 @@
-import Localization from "."
-
 export type LocalizationObjectData = Record<string, string>
 
 export type LocalizationArrayData = Record<string, string>[]

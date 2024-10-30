@@ -59,7 +59,12 @@ class Config {
             return new Config(response.data)
         }
 
-        const response = await axios.get(endpointUrl)
+        const response = await axios.get(endpointUrl, {
+            params: {
+                filter: filter?.join(","),
+                platform: platform
+            }
+        })
 
         return new Config({
             rawData: response.data,

@@ -1,5 +1,5 @@
 import { RestructuredDragon } from "../config/types/restructured-data/items/dragon.type"
-import elementsSettingSetting from "../settings/elements.setting"
+import elementsSetting from "../settings/elements.setting"
 import { normalizeString } from "../utils/text.util"
 
 export type DragonsSetCustomFilterOptions = {

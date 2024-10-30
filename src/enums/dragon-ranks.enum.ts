@@ -1,16 +1,16 @@
 enum DragonRanks {
-    BronzeIII = "bronzeIII",
-    BronzeII = "bronzeII",
-    BronzeI = "bronzeI",
-    SilverIII = "silverIII",
-    SilverII = "silverII",
-    SilverI = "silverI",
-    GoldIII = "goldIII",
-    GoldII = "goldII",
-    GoldI = "goldI",
-    PlatinumIII = "platinumIII",
-    PlatinumII = "platinumII",
-    PlatinumI = "platinumI",
+    BronzeIII = 1,
+    BronzeII = 2,
+    BronzeI = 3,
+    SilverIII = 4,
+    SilverII = 5,
+    SilverI = 6,
+    GoldIII = 7,
+    GoldII = 8,
+    GoldI = 9,
+    PlatinumIII = 10,
+    PlatinumII = 11,
+    PlatinumI = 12,
 }
 
 export default DragonRanks
