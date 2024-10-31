@@ -1,6 +1,6 @@
-import { RestructuredDragon } from "../config/types/restructured-data/items/dragon.type"
-import elementsSetting from "../settings/elements.setting"
-import { normalizeString } from "../utils/text.util"
+import { RestructuredDragon } from "../config/types/restructured-data/items/dragon"
+import elementsSetting from "../settings/elements"
+import { normalizeString } from "../utils/text"
 
 export type DragonsSetCustomFilterOptions = {
     name?: string

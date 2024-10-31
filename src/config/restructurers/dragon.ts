@@ -1,7 +1,7 @@
-import { RestructuredBuyPrice, RestructuredSellPrice, RestructuredImageNames, RestructuredDragon } from "../types/restructured-data/items/dragon.type"
-import restructureObject from "../../utils/restructure-object.util"
-import numberToBoolean from "../../utils/number-to-boolean.util"
-import { Item } from "../types/data.type"
+import { RestructuredBuyPrice, RestructuredSellPrice, RestructuredImageNames, RestructuredDragon } from "../types/restructured-data/items/dragon"
+import restructureObject from "../../utils/restructure-object"
+import numberToBoolean from "../../utils/number-to-boolean"
+import { Item } from "../types/data"
 
 export type DragonRestructurerOptions = {}
 

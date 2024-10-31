@@ -1,5 +1,5 @@
-import StaticFileUrlPlatformPrefixies from "../enums/static-file-url-platform-prefixies.enum"
-import BaseStaticFileDownloader from "./base-downloader.static-file"
+import StaticFileUrlPlatformPrefixies from "../enums/static-file-url-platform-prefixies"
+import BaseStaticFileDownloader from "./base-downloader"
 
 export type DragonThumbnailOptions = {
     imageName: string

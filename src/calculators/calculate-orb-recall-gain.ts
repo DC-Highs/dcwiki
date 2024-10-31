@@ -1,7 +1,5 @@
-import validateDragonLevel from "../tools/validate-dragon-level.tool"
-import validateDragonStars from "../tools/validate-dragon-stars.tool"
-import orbRecallReturn from "../settings/orb-recall-return.setting"
-import validateDragonLevelCompatibilityWithStars from "../tools/validate-dragon-level-compatibility-with-stars.tool"
+import validateDragonLevelCompatibilityWithStars from "../tools/validate-dragon-level-compatibility-with-stars"
+import orbRecallReturn from "../settings/orb-recall-return"
 
 export type CalculateOrbRecallGainOptions = {
     level: number

@@ -1,6 +1,6 @@
-import validateDragonLevel from "./validate-dragon-level.tool"
-import validateDragonStars from "./validate-dragon-stars.tool"
-import dragonsSetting from "../settings/dragons.setting"
+import validateDragonLevel from "./validate-dragon-level"
+import validateDragonStars from "./validate-dragon-stars"
+import dragonsSetting from "../settings/dragons"
 
 export type validateDragonLevelCompatibilityWithStarsOptions = {
     level: number

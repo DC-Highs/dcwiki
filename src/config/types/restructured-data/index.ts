@@ -1,4 +1,4 @@
-import { RestructuredItems } from "./items/index.type"
+import { RestructuredItems } from "./items"
 
 export interface RestructuredConfigData {
     items: RestructuredItems

@@ -1,6 +1,6 @@
-import StaticFileUrlPlatformPrefixies from "../enums/static-file-url-platform-prefixies.enum"
-import TextureCompressionFormats from "../enums/texture-compression-formats.enum"
-import BaseStaticFileDownloader from "./base-downloader.static-file"
+import StaticFileUrlPlatformPrefixies from "../enums/static-file-url-platform-prefixies"
+import TextureCompressionFormats from "../enums/texture-compression-formats"
+import BaseStaticFileDownloader from "./base-downloader"
 
 export type DragonSpineAnimationOptions = {
     imageName: string

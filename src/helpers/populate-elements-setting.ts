@@ -1,4 +1,4 @@
-import elementsSetting from "../settings/elements.setting"
+import elementsSetting from "../settings/elements"
 import Localization from "../localization"
 
 export type PopulatedElement = {

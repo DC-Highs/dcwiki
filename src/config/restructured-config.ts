@@ -1,5 +1,5 @@
-import { RestructuredConfigData } from "./types/restructured-data/index.type"
-import DragonsSet from "../helpers/dragons-set.helper"
+import { RestructuredConfigData } from "./types/restructured-data"
+import DragonsSet from "../common/dragons-set"
 import DataCompiler from "./data-compiler"
 
 

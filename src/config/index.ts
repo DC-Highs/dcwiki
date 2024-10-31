@@ -1,12 +1,12 @@
 import { groupBy } from "lodash"
 import axios from "axios"
 
-import { RestructuredItems } from "./types/restructured-data/items/index.type"
-import objectKeysConversor from "../utils/object-keys-conversor.util"
-import DragonRestructurer from "./restructurers/dragon.restructurer"
-import { CreateConfigOptions } from "./types/index.type"
+import { RestructuredItems } from "./types/restructured-data/items"
+import objectKeysConversor from "../utils/object-keys-conversor"
+import DragonRestructurer from "./restructurers/dragon"
+import { CreateConfigOptions } from "./types"
 import RestructuredConfig from "./restructured-config"
-import { GameConfigData } from "./types/data.type"
+import { GameConfigData } from "./types/data"
 import Localization from "../localization"
 
 export type ConfigOptions = {

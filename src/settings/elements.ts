@@ -1,4 +1,4 @@
-import DragonElements from "../enums/dragon-elements.enum"
+import DragonElements from "../enums/dragon-elements"
 
 const elementsSetting = {
     [DragonElements.Terra]: {

@@ -1,5 +1,5 @@
-import IslandTypes from "../enums/island-types.enum"
-import BaseStaticFileDownloader from "./base-downloader.static-file"
+import IslandTypes from "../enums/island-types"
+import BaseStaticFileDownloader from "./base-downloader"
 
 export type IslandPackageOptions = {
     islandType?: string

@@ -1,6 +1,6 @@
-import StaticFileUrlPlatformPrefixies from "../enums/static-file-url-platform-prefixies.enum"
-import DragonSpriteQuality from "../enums/dragon-sprite-quality.enum"
-import BaseStaticFileDownloader from "./base-downloader.static-file"
+import StaticFileUrlPlatformPrefixies from "../enums/static-file-url-platform-prefixies"
+import DragonSpriteQuality from "../enums/dragon-sprite-quality"
+import BaseStaticFileDownloader from "./base-downloader"
 
 export type DragonSpriteOptions = {
     imageQuality?: string

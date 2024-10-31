@@ -11,7 +11,7 @@ import type {
     QueryfyStringOptions,
     SearchKeysOptions,
     SearchValuesOptions
-} from "./types.localization"
+} from "./types"
 
 export type AnyLocalization = LocalizationData | Localization
 

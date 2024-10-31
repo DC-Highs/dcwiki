@@ -1,9 +1,9 @@
-import DragonFlashAnimation, { DragonFlashAnimationOptions } from "../static-files/dragon-flash-animation.static-file"
-import DragonSpineAnimation, { DragonSpineAnimationOptions } from "../static-files/dragon-spine-animation.static-file"
-import DragonThumbnail, { DragonThumbnailOptions } from "../static-files/dragon-thumb.static-file"
-import IslandPackage, { IslandPackageOptions } from "../static-files/island-package.static-file"
-import DragonSprite, { DragonSpriteOptions } from "../static-files/dragon-sprite.static-file"
-import Music, { MusicOptions } from "../static-files/music.static-file"
+import DragonFlashAnimation, { DragonFlashAnimationOptions } from "../static-files/dragon-flash-animation"
+import DragonSpineAnimation, { DragonSpineAnimationOptions } from "../static-files/dragon-spine-animation"
+import DragonThumbnail, { DragonThumbnailOptions } from "../static-files/dragon-thumbnail"
+import IslandPackage, { IslandPackageOptions } from "../static-files/island-package"
+import DragonSprite, { DragonSpriteOptions } from "../static-files/dragon-sprite"
+import Music, { MusicOptions } from "../static-files/music"
 
 const staticFilesService = {
     dragons: {

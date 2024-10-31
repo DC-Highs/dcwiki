@@ -1,4 +1,4 @@
-import dragonsSetting from "../settings/dragons.setting"
+import dragonsSetting from "../settings/dragons"
 
 export type ValidateDragonRankOptions = {
     throwOnError?: boolean

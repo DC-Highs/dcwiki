@@ -1,4 +1,4 @@
-import getMusicKeyNameFromTag from "../tools/get-music-name-from-tag.tool"
+import getMusicKeyNameFromTag from "../tools/get-music-name-from-tag"
 
 const soundsService = {
     getMusicKeyNameFromTag: getMusicKeyNameFromTag

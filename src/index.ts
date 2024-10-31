@@ -1,7 +1,7 @@
-import staticFilesService from "./services/static-files.service"
-import calculatorsService from "./services/calculators.service"
-import SettingsService from "./services/settings.service"
-import toolsService from "./services/tools.service"
+import staticFilesService from "./services/static-files"
+import calculatorsService from "./services/calculators"
+import SettingsService from "./services/settings"
+import toolsService from "./services/tools"
 import Localization from "./localization"
 import Config from "./config"
 

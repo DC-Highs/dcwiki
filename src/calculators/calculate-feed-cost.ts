@@ -1,5 +1,5 @@
-import validateDragonLevel from "../tools/validate-dragon-level.tool"
-import feedCosts from "../settings/feed-costs.setting"
+import validateDragonLevel from "../tools/validate-dragon-level"
+import feedCosts from "../settings/feed-costs"
 
 export type CalculateFeedCostOptions = {
     initialLevel: number

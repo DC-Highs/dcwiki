@@ -1,4 +1,4 @@
-import IslandTypes from "../enums/island-types.enum"
+import IslandTypes from "../enums/island-types"
 
 const islandsSetting = {
     fogIslands: {

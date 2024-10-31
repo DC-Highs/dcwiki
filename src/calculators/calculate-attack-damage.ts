@@ -1,7 +1,7 @@
-import validateDragonLevelCompatibilityWithStars from "../tools/validate-dragon-level-compatibility-with-stars.tool"
-import validateDragonCategory from "../tools/validate-dragon-category.tool"
-import validateDragonRank from "../tools/validate-dragon-rank.tool"
-import dragonsSetting from "../settings/dragons.setting"
+import validateDragonLevelCompatibilityWithStars from "../tools/validate-dragon-level-compatibility-with-stars"
+import validateDragonCategory from "../tools/validate-dragon-category"
+import validateDragonRank from "../tools/validate-dragon-rank"
+import dragonsSetting from "../settings/dragons"
 
 const damageVariant = dragonsSetting.attacks.damageVariant
 

@@ -1,7 +1,7 @@
-import DragonCategories from "../enums/dragon-categories.enum"
-import DragonRarities from "../enums/dragon-rarities.enum"
-import DragonPhases from "../enums/dragon-phases.enum"
-import DragonRanks from "../enums/dragon-ranks.enum"
+import DragonCategories from "../enums/dragon-categories"
+import DragonRarities from "../enums/dragon-rarities"
+import DragonPhases from "../enums/dragon-phases"
+import DragonRanks from "../enums/dragon-ranks"
 
 const dragonsSetting = {
     levels: {
