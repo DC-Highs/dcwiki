@@ -1,8 +1,10 @@
 {
   "name": "dcwiki",
-  "version": "0.0.1",
-  "description": "",
-  "main": "index.js",
+  "version": "0.0.2",
+  "description": "DC Wiki is a library for handling data, calculations, validation and downloading static files related to the game Dragon City (fan-made library).",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/types/index.d.ts",
   "scripts": {
     "test": "ts-node test/index.ts",
     "build:clean": "rimraf dist",
@@ -10,9 +12,15 @@
     "build": "npm-run-all build:clean compile generate-exports && node ./dev-scripts/prepare-package-json.js",
     "generate-exports": "node dev-scripts/generate-exports.cjs"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "dragon city",
+    "dragon city wiki",
+    "dragon city data",
+    "dragon city static files",
+    "dragon city"
+  ],
+  "author": "Marcuth",
+  "license": "MIT",
   "devDependencies": {
     "@types/lodash": "^4.17.12",
     "@types/node": "^22.8.1",
