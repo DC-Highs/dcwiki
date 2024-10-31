@@ -1,6 +1,6 @@
 {
   "name": "dcwiki",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "DC Wiki is a library for handling data, calculations, validation and downloading static files related to the game Dragon City (fan-made library).",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
