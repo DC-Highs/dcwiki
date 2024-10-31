@@ -6,7 +6,7 @@ export type ValidateDragonRankOptions = {
 
 function validateDragonRank(
     rank: number,
-    { throwOnError = true }: ValidateDragonRankOptions = { throwOnError: true }
+    { throwOnError = false }: ValidateDragonRankOptions = { throwOnError: false }
 ): boolean {
     const dragonRanks = Object.values(dragonsSetting.ranks).map(dragonRank => dragonRank.index)
     

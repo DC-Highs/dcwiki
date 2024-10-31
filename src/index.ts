@@ -66,9 +66,9 @@ class DCWiki {
         })
 
         return new DCWiki({
-            localization,
-            config,
-            language
+            localization: localization,
+            config: config,
+            language: language
         })
     }
 }

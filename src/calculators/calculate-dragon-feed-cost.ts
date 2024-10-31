@@ -1,12 +1,12 @@
 import validateDragonLevel from "../tools/validate-dragon-level"
 import feedCosts from "../settings/feed-costs"
 
-export type CalculateFeedCostOptions = {
+export type calculateDragonFeedCostOptions = {
     initialLevel: number
     finalLevel: number
 }
 
-function calculateFeedCost({ initialLevel, finalLevel }: CalculateFeedCostOptions) {
+function calculateDragonFeedCost({ initialLevel, finalLevel }: calculateDragonFeedCostOptions) {
     validateDragonLevel(initialLevel, { throwOnError: true })
     validateDragonLevel(finalLevel, { throwOnError: true })
 
@@ -28,4 +28,4 @@ function calculateFeedCost({ initialLevel, finalLevel }: CalculateFeedCostOption
     return cost
 }
 
-export default calculateFeedCost
+export default calculateDragonFeedCost

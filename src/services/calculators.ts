@@ -1,18 +1,25 @@
-import calculateOrbRecallGain from "../calculators/calculate-orb-recall-gain"
-import calculateAttackDamage from "../calculators/calculate-attack-damage"
-import calculateFeedCost from "../calculators/calculate-feed-cost"
+import {
+    calculateOrbRecallGain,
+    calculateAttackDamage,
+    calculateDragonFeedCost,
+    calculateDragonBreeding,
+    calculateElementsStrengths,
+    calculateElementWeaknesses,
+    calculateElementStrengths
+} from "../calculators"
 
 const calculatorsService = {
     dragons: {
-        calculateFeedCost: calculateFeedCost,
+        calculateFeedCost: calculateDragonFeedCost,
         calculateStatus: (options: any) => {},
-        calculateBreeding: (options: any) => {},
+        calculateBreeding: calculateDragonBreeding,
         calculateRecallGain: calculateOrbRecallGain,
         calculateAttackDamage: calculateAttackDamage,
     },
     elements: {
-        calculateWeaknesses: (options: any) => {},
-        calculateStrengths: (options: any) => {},
+        calculateWeaknesses: calculateElementWeaknesses,
+        calculateStrengths: calculateElementStrengths,
+        calculateStrengthsOfMany: calculateElementsStrengths
     }
 }
 

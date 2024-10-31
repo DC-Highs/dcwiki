@@ -2,7 +2,6 @@ import { RestructuredConfigData } from "./types/restructured-data"
 import DragonsSet from "../common/dragons-set"
 import DataCompiler from "./data-compiler"
 
-
 class RestructuredConfig {
     public constructor(public readonly data: RestructuredConfigData) { }
 

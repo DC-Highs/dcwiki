@@ -12,3 +12,5 @@ enum ConfigLanguages {
     Korean = "ko",
     Turkish = "tr",
 }
+
+export default ConfigLanguages

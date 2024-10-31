@@ -1,4 +1,4 @@
-enum ConfigPlatform {
+enum ConfigPlatforms {
     Default = "ios",
     Android = "android",
     Windows = "windows",
@@ -6,4 +6,4 @@ enum ConfigPlatform {
     Amazon = "amazon"
 }
 
-export default ConfigPlatform
+export default ConfigPlatforms

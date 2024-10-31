@@ -6,7 +6,7 @@ export type ValidateDragonStarsOptions = {
 
 function validateDragonStars(
     stars: number,
-    { throwOnError = true }: ValidateDragonStarsOptions = { throwOnError: true }
+    { throwOnError = false }: ValidateDragonStarsOptions = { throwOnError: false }
 ): boolean {
     if (stars < dragonsSetting.empowerment.starts.minimum) {
         if (throwOnError) {

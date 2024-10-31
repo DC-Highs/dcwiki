@@ -1,5 +1,5 @@
 function rgbToHexadecimal(rgb: number[]): string {
-    const [r, g, b] = rgb;
+    const [r, g, b] = rgb
 
     const toHex = (value: number): string => {
         const hex = value.toString(16).toUpperCase()
