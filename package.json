@@ -1,6 +1,6 @@
 {
   "name": "dcwiki",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "DC Wiki is a library for handling data, calculations, validation and downloading static files related to the game Dragon City (fan-made library).",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
@@ -397,6 +397,12 @@
       "require": "./dist/cjs/static-files/music.js",
       "default": "./dist/esm/static-files/music.js",
       "types": "./dist/types/static-files/music.d.ts"
+    },
+    "./tools/find-dragon-static-files": {
+      "import": "./dist/esm/tools/find-dragon-static-files.js",
+      "require": "./dist/cjs/tools/find-dragon-static-files.js",
+      "default": "./dist/esm/tools/find-dragon-static-files.js",
+      "types": "./dist/types/tools/find-dragon-static-files.d.ts"
     },
     "./tools/get-music-name-from-tag": {
       "import": "./dist/esm/tools/get-music-name-from-tag.js",
