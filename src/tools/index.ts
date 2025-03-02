@@ -1,5 +1,6 @@
 import validateDragonLevelCompatibilityWithStars from "./validate-dragon-level-compatibility-with-stars"
 import validateDragonCategory from "./validate-dragon-category"
+import findDragonStaticFiles from "./find-dragon-static-files"
 import getMusicKeyNameFromTag from "./get-music-name-from-tag"
 import validateDragonRarity from "./validate-dragon-rarity"
 import validateDragonStars from "./validate-dragon-stars"
@@ -15,5 +16,6 @@ export {
     validateDragonStars,
     validateElementName,
     validateDragonLevel,
-    validateDragonRank
+    validateDragonRank,
+    findDragonStaticFiles
 }

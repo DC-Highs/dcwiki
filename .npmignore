@@ -3,3 +3,4 @@ tsconfig.json
 dev-scripts/
 testdata/
 test/
+.env
